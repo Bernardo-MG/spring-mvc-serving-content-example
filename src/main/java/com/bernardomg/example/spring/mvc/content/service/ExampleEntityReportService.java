@@ -24,9 +24,9 @@
 
 package com.bernardomg.example.spring.mvc.content.service;
 
-import net.sf.jasperreports.engine.JasperPrint;
-
 import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
+
+import net.sf.jasperreports.engine.JasperPrint;
 
 /**
  * Service for generating reports for the example entities.

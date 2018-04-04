@@ -24,8 +24,8 @@
 
 package com.bernardomg.example.spring.mvc.content.service;
 
-import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
 import com.bernardomg.example.spring.mvc.content.model.ExampleEntity;
+import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
 
 /**
  * Service for the example entity domain.

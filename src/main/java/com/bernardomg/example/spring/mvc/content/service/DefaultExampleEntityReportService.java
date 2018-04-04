@@ -33,14 +33,14 @@ import org.apache.commons.collections.IteratorUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
-
-import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
 
 /**
  * Default implementation of the report service.

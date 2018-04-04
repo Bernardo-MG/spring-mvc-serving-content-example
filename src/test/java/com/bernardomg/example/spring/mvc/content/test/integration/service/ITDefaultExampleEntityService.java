@@ -26,6 +26,8 @@ package com.bernardomg.example.spring.mvc.content.test.integration.service;
 
 import java.util.Collection;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
@@ -36,9 +38,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.junit.Test;
-
-import org.junit.Assert;
 
 import com.bernardomg.example.spring.mvc.content.model.ExampleEntity;
 import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;

@@ -36,9 +36,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.google.common.base.MoreObjects;
-
 import com.bernardomg.example.spring.mvc.content.model.ExampleEntity;
+import com.google.common.base.MoreObjects;
 
 /**
  * Persistent entity for the example application.

@@ -29,8 +29,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
 import com.bernardomg.example.spring.mvc.content.model.ExampleEntity;
+import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
 import com.bernardomg.example.spring.mvc.content.repository.ExampleEntityRepository;
 
 /**
