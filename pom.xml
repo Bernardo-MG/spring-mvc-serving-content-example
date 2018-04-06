@@ -120,32 +120,6 @@
          </build>
       </profile>
       <!-- ============================================== -->
-      <!-- ============= DATABASE PROFILES ============== -->
-      <!-- ============================================== -->
-      <profile>
-         <!-- H2 database profile -->
-         <!-- Prepares the project to make use of an H2 in-memory database -->
-         <id>h2</id>
-         <properties>
-            <!-- Access data -->
-            <!-- Default values for testing and development -->
-            <!-- Override them for production -->
-            <database.url>jdbc:h2:mem:spring_mvc_serving_content_example</database.url>
-            <database.username>sa</database.username>
-            <database.password></database.password>
-            <!-- Spring context -->
-            <spring.profile.database>h2</spring.profile.database>
-         </properties>
-         <dependencies>
-            <dependency>
-               <!-- H2 database -->
-               <groupId>com.h2database</groupId>
-               <artifactId>h2</artifactId>
-               <version>${h2.version}</version>
-            </dependency>
-         </dependencies>
-      </profile>
-      <!-- ============================================== -->
       <!-- ========= EMBEDDED SERVER PROFILES =========== -->
       <!-- ============================================== -->
       <profile>
@@ -321,6 +295,12 @@
       <!-- ============================================== -->
       <manifest.name>com/bernardomg/example/spring/mvc/content</manifest.name>
       <!-- ============================================== -->
+      <!-- ============== DB ACCESS DATA ================ -->
+      <!-- ============================================== -->
+      <database.url>jdbc:h2:mem:spring-mvc-security-example</database.url>
+      <database.username>sa</database.username>
+      <database.password></database.password>
+      <!-- ============================================== -->
       <!-- =============== TESTING SERVER =============== -->
       <!-- ============================================== -->
       <server.test.rootPath>/serving_content</server.test.rootPath>
@@ -495,6 +475,15 @@
          <groupId>org.liquibase</groupId>
          <artifactId>liquibase-core</artifactId>
          <version>${liquibase.version}</version>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- ==================== H2 ====================== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- H2 database -->
+         <groupId>com.h2database</groupId>
+         <artifactId>h2</artifactId>
+         <version>${h2.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ================ THYMELEAF =================== -->
