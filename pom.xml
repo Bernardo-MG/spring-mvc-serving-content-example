@@ -297,7 +297,7 @@
       <!-- ============================================== -->
       <!-- ============== DB ACCESS DATA ================ -->
       <!-- ============================================== -->
-      <database.url>jdbc:h2:mem:spring-mvc-security-example</database.url>
+      <database.url>jdbc:h2:mem:spring-mvc-serving-content-example</database.url>
       <database.username>sa</database.username>
       <database.password></database.password>
       <!-- ============================================== -->
