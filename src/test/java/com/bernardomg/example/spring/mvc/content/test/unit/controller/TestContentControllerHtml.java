@@ -22,29 +22,20 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring.mvc.content.test.integration.controller;
+package com.bernardomg.example.spring.mvc.content.test.unit.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mockito;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
-import com.bernardomg.example.spring.mvc.content.controller.ExampleEntityViewConstants;
+import com.bernardomg.example.spring.mvc.content.controller.ContentController;
+import com.bernardomg.example.spring.mvc.content.service.ContentService;
 import com.bernardomg.example.spring.mvc.content.test.config.UrlConfig;
 
 /**
@@ -53,28 +44,22 @@ import com.bernardomg.example.spring.mvc.content.test.config.UrlConfig;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@RunWith(JUnitPlatform.class)
-@ExtendWith(SpringExtension.class)
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class })
-@WebAppConfiguration
-@ContextConfiguration(locations = { "classpath:context/test-context.xml" })
-public final class ITContentControllerHtml {
+public final class TestContentControllerHtml {
 
     /**
      * Mocked MVC context.
      */
-    private MockMvc               mockMvc;
+    private MockMvc        mockMvc;
 
     /**
-     * Web application context.
+     * Mocked service;
      */
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+    private ContentService service;
 
     /**
      * Default constructor.
      */
-    public ITContentControllerHtml() {
+    public TestContentControllerHtml() {
         super();
     }
 
@@ -85,7 +70,12 @@ public final class ITContentControllerHtml {
      */
     @BeforeEach
     public final void setUpMockContext() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+        service = Mockito.mock(ContentService.class);
+        // TODO: Test with empty strings
+        Mockito.when(service.getViewContent()).thenReturn("view:something");
+        Mockito.when(service.getStringContent()).thenReturn("abc");
+
+        mockMvc = MockMvcBuilders.standaloneSetup(getController())
                 .alwaysExpect(MockMvcResultMatchers.status().isOk()).build();
     }
 
@@ -97,13 +87,18 @@ public final class ITContentControllerHtml {
      */
     @Test
     public final void testRequest_ExpectedAttributeModel() throws Exception {
-        final ResultActions result; // Request result
+        mockMvc.perform(getViewRequest()).andReturn();
 
-        result = mockMvc.perform(getViewRequest());
+        Mockito.verify(service, Mockito.times(1)).getViewContent();
+    }
 
-        // The response model contains the expected attributes
-        result.andExpect(MockMvcResultMatchers.model()
-                .attributeExists(ExampleEntityViewConstants.PARAM_ENTITIES));
+    /**
+     * Returns a controller with mocked dependencies.
+     * 
+     * @return a mocked controller
+     */
+    private final ContentController getController() {
+        return new ContentController(service);
     }
 
     /**

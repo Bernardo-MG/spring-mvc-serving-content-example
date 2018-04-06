@@ -26,23 +26,36 @@ package com.bernardomg.example.spring.mvc.content.service;
 
 import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
 
-import net.sf.jasperreports.engine.JasperPrint;
-
 /**
- * Service for generating reports for the example entities.
- * 
- * @author Bernardo Mart&iacute;nez Garrido
+ * Service for the content controller.
+ * <p>
+ * This contains all the operations needed for the controller.
  *
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public interface ExampleEntityReportService {
+public interface ContentService {
 
     /**
-     * Returns the report for the received data.
+     * Returns all the entities from the DB.
      * 
-     * @param data
-     *            data to populate the report
-     * @return the report for the data
+     * @return the persisted entities
      */
-    public JasperPrint getReport(final Iterable<DefaultExampleEntity> data);
+    public Iterable<DefaultExampleEntity> getAllEntities();
+
+    /**
+     * Returns the string content.
+     * <p>
+     * This will be generated from the DB entities.
+     * 
+     * @return the string content
+     */
+    public String getStringContent();
+
+    /**
+     * Returns the view for the HTML content.
+     * 
+     * @return the string content
+     */
+    public String getViewContent();
 
 }

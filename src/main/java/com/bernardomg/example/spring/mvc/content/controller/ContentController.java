@@ -26,18 +26,13 @@ package com.bernardomg.example.spring.mvc.content.controller;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.bernardomg.example.spring.mvc.content.model.ExampleEntity;
-import com.bernardomg.example.spring.mvc.content.model.persistence.DefaultExampleEntity;
-import com.bernardomg.example.spring.mvc.content.service.ExampleEntityService;
+import com.bernardomg.example.spring.mvc.content.service.ContentService;
 
 /**
  * Controller for home view.
@@ -48,14 +43,9 @@ import com.bernardomg.example.spring.mvc.content.service.ExampleEntityService;
 public class ContentController {
 
     /**
-     * Name for the view.
-     */
-    private static final String        VIEW = "views/list";
-
-    /**
      * Example entity service.
      */
-    private final ExampleEntityService exampleEntityService;
+    private final ContentService exampleEntityService;
 
     /**
      * Constructs a controller with the specified dependencies.
@@ -64,7 +54,7 @@ public class ContentController {
      *            example entity service
      */
     @Autowired
-    public ContentController(final ExampleEntityService service) {
+    public ContentController(final ContentService service) {
         super();
 
         exampleEntityService = checkNotNull(service,
@@ -83,7 +73,7 @@ public class ContentController {
         // Loads required data into the model
         loadViewModel(model);
 
-        return VIEW;
+        return getContentService().getViewContent();
     }
 
     /**
@@ -95,22 +85,15 @@ public class ContentController {
      */
     @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public final String showString(final ModelMap model) {
-        final String result;
-        final Iterable<DefaultExampleEntity> read;
-
-        read = getExampleEntityService().getAllEntities();
-        result = StreamSupport.stream(read.spliterator(), false)
-                .map(ExampleEntity::getName).collect(Collectors.joining(","));
-
-        return result;
+        return getContentService().getStringContent();
     }
 
     /**
-     * Returns the example entity service.
+     * Returns the content service.
      * 
-     * @return the example entity service
+     * @return the content service
      */
-    private final ExampleEntityService getExampleEntityService() {
+    private final ContentService getContentService() {
         return exampleEntityService;
     }
 
@@ -125,7 +108,7 @@ public class ContentController {
      */
     private final void loadViewModel(final ModelMap model) {
         model.put(ExampleEntityViewConstants.PARAM_ENTITIES,
-                getExampleEntityService().getAllEntities());
+                getContentService().getAllEntities());
     }
 
 }

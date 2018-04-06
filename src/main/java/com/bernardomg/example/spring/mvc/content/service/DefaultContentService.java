@@ -26,6 +26,9 @@ package com.bernardomg.example.spring.mvc.content.service;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +43,12 @@ import com.bernardomg.example.spring.mvc.content.repository.ExampleEntityReposit
  *
  */
 @Service
-public class DefaultExampleEntityService implements ExampleEntityService {
+public class DefaultContentService implements ContentService {
+
+    /**
+     * Name for the view.
+     */
+    private static final String           VIEW = "views/list";
 
     /**
      * Repository for the domain entities handled by the service.
@@ -54,42 +62,11 @@ public class DefaultExampleEntityService implements ExampleEntityService {
      *            the repository for the entity instances
      */
     @Autowired
-    public DefaultExampleEntityService(
-            final ExampleEntityRepository repository) {
+    public DefaultContentService(final ExampleEntityRepository repository) {
         super();
 
         entityRepository = checkNotNull(repository,
                 "Received a null pointer as repository");
-    }
-
-    @Override
-    public final ExampleEntity add(final DefaultExampleEntity entity) {
-        return getExampleEntityRepository().save(entity);
-    }
-
-    /**
-     * Returns an entity with the given id.
-     * <p>
-     * If no instance exists with that id then an entity with a negative id is
-     * returned.
-     *
-     * @param identifier
-     *            identifier of the entity to find
-     * @return the entity for the given id
-     */
-    @Override
-    public final ExampleEntity findById(final Integer identifier) {
-        final ExampleEntity entity;
-
-        checkNotNull(identifier, "Received a null pointer as identifier");
-
-        if (getExampleEntityRepository().existsById(identifier)) {
-            entity = getExampleEntityRepository().getOne(identifier);
-        } else {
-            entity = new DefaultExampleEntity();
-        }
-
-        return entity;
     }
 
     @Override
@@ -98,8 +75,20 @@ public class DefaultExampleEntityService implements ExampleEntityService {
     }
 
     @Override
-    public final void remove(final DefaultExampleEntity entity) {
-        getExampleEntityRepository().delete(entity);
+    public final String getStringContent() {
+        final String result;
+        final Iterable<DefaultExampleEntity> read;
+
+        read = getExampleEntityRepository().findAll();
+        result = StreamSupport.stream(read.spliterator(), false)
+                .map(ExampleEntity::getName).collect(Collectors.joining(","));
+
+        return result;
+    }
+
+    @Override
+    public final String getViewContent() {
+        return VIEW;
     }
 
     /**

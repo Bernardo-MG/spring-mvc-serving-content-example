@@ -22,29 +22,20 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring.mvc.content.test.integration.controller;
+package com.bernardomg.example.spring.mvc.content.test.unit.controller;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mockito;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
+import com.bernardomg.example.spring.mvc.content.controller.ContentController;
+import com.bernardomg.example.spring.mvc.content.service.ContentService;
 import com.bernardomg.example.spring.mvc.content.test.config.UrlConfig;
 
 /**
@@ -53,28 +44,22 @@ import com.bernardomg.example.spring.mvc.content.test.config.UrlConfig;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@RunWith(JUnitPlatform.class)
-@ExtendWith(SpringExtension.class)
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class })
-@WebAppConfiguration
-@ContextConfiguration(locations = { "classpath:context/test-context.xml" })
-public final class ITContentControllerText {
+public final class TestContentControllerText {
 
     /**
      * Mocked MVC context.
      */
-    private MockMvc               mockMvc;
+    private MockMvc        mockMvc;
 
     /**
-     * Web application context.
+     * Mocked service;
      */
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+    private ContentService service;
 
     /**
      * Default constructor.
      */
-    public ITContentControllerText() {
+    public TestContentControllerText() {
         super();
     }
 
@@ -85,7 +70,11 @@ public final class ITContentControllerText {
      */
     @BeforeEach
     public final void setUpMockContext() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+        service = Mockito.mock(ContentService.class);
+        Mockito.when(service.getViewContent()).thenReturn("view:something");
+        Mockito.when(service.getStringContent()).thenReturn("abc");
+
+        mockMvc = MockMvcBuilders.standaloneSetup(getController())
                 .alwaysExpect(MockMvcResultMatchers.status().isOk()).build();
     }
 
@@ -94,15 +83,18 @@ public final class ITContentControllerText {
      */
     @Test
     public final void testRequest_ExpectedText() throws Exception {
-        final MvcResult result; // Request result
-        final String text;      // Returned text
+        mockMvc.perform(getViewRequest()).andReturn();
 
-        result = mockMvc.perform(getViewRequest()).andReturn();
+        Mockito.verify(service, Mockito.times(1)).getStringContent();
+    }
 
-        text = result.getResponse().getContentAsString();
-
-        // The response is the expected text
-        Assert.assertEquals("", text);
+    /**
+     * Returns a controller with mocked dependencies.
+     * 
+     * @return a mocked controller
+     */
+    private final ContentController getController() {
+        return new ContentController(service);
     }
 
     /**
