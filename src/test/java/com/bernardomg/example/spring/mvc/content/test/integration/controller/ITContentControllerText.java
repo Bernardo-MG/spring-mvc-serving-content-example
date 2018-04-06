@@ -34,7 +34,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -58,10 +57,7 @@ import com.bernardomg.example.spring.mvc.content.test.config.UrlConfig;
 @ExtendWith(SpringExtension.class)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class })
 @WebAppConfiguration
-@ContextConfiguration(locations = { "classpath:context/application-context.xml",
-        "classpath:context/servlet.xml" })
-@TestPropertySource({ "classpath:config/persistence-access.properties",
-        "classpath:config/service.properties" })
+@ContextConfiguration(locations = { "classpath:context/test-context.xml" })
 public final class ITContentControllerText {
 
     /**
