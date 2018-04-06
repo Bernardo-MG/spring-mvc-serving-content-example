@@ -44,7 +44,7 @@ import com.bernardomg.example.spring.mvc.content.service.ExampleEntityService;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Controller
+@Controller("/")
 public class ContentController {
 
     /**
@@ -78,7 +78,7 @@ public class ContentController {
      *            model map
      * @return the welcome view
      */
-    @GetMapping(path = "/", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     public final String showHtml(final ModelMap model) {
         // Loads required data into the model
         loadViewModel(model);
@@ -93,7 +93,7 @@ public class ContentController {
      *            model map
      * @return the entities names as a string
      */
-    @GetMapping(path = "/", produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public final String showString(final ModelMap model) {
         final String result;
         final Iterable<DefaultExampleEntity> read;
