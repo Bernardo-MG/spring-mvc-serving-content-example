@@ -24,8 +24,8 @@
 
 package com.bernardomg.example.spring.mvc.content.test.integration.controller;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
@@ -83,7 +83,7 @@ public final class ITContentControllerHtml {
      * <p>
      * It expects all the responses to have the OK (200) HTTP code.
      */
-    @Before
+    @BeforeEach
     public final void setUpMockContext() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
                 .alwaysExpect(MockMvcResultMatchers.status().isOk()).build();
