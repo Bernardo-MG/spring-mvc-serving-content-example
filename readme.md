@@ -119,8 +119,6 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[bintray-repo]: https://bintray.com/bernardo-mg/maven/spring-mvc-serving-content-example/view
-[maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.example/spring-mvc-serving-content-example
 [issues]: https://github.com/bernardo-mg/spring-mvc-serving-content-example/issues
 [javadoc-develop]: ${urlSiteDevelop}/spring-mvc-serving-content-example/apidocs
 [javadoc-release]: ${urlSiteRelease}/spring-mvc-serving-content-example/apidocs
