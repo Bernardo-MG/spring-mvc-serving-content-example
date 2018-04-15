@@ -2,9 +2,6 @@
 
 Example which uses a single controller and a single URL to return several types of content.
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.bernardomg.example/spring-mvc-serving-content-example.svg)][maven-repo]
-[![Bintray](https://api.bintray.com/packages/bernardo-mg/maven/spring-mvc-serving-content-example/images/download.svg)][bintray-repo]
-
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
 
