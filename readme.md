@@ -120,9 +120,9 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 The project has been released under the [MIT License][license].
 
 [issues]: https://github.com/bernardo-mg/spring-mvc-serving-content-example/issues
-[javadoc-develop]: ${urlSiteDevelop}/spring-mvc-serving-content-example/apidocs
-[javadoc-release]: ${urlSiteRelease}/spring-mvc-serving-content-example/apidocs
+[javadoc-develop]: http://docs.bernardomg.com/development/spring-mvc-serving-content-example/apidocs
+[javadoc-release]: http://docs.bernardomg.com/spring-mvc-serving-content-example/apidocs
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-mvc-serving-content-example
-[site-develop]: ${urlSiteDevelop}/spring-mvc-serving-content-example
-[site-release]: ${urlSiteRelease}/spring-mvc-serving-content-example
+[site-develop]: http://docs.bernardomg.com/development/spring-mvc-serving-content-example
+[site-release]: http://docs.bernardomg.com/spring-mvc-serving-content-example
