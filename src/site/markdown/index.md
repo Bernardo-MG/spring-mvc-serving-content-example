@@ -1,4 +1,4 @@
-# ${projectName}
+# Serving Content with Spring MVC
 
 This is a base project created with the [Spring MVC with Thymeleaf Maven Archetype][archetype], prepared to ease the development of new libraries.
 
