@@ -31,6 +31,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bernardomg.example.spring.mvc.content.service.ContentService;
 
@@ -39,7 +40,8 @@ import com.bernardomg.example.spring.mvc.content.service.ContentService;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Controller("/")
+@Controller
+@RequestMapping("/")
 public class ContentController {
 
     /**
