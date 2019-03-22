@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.2.1</version>
+      <version>1.2.4</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -347,7 +347,7 @@
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>1.2.0</site.skin.version>
+      <site.skin.version>1.4.1</site.skin.version>
       <serverTestPath>${server.test.path}</serverTestPath>
    </properties>
 
