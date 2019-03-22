@@ -8,8 +8,7 @@ jdk:
   - oraclejdk8
 env:
   - SERVER=jetty DEPLOY_DOCS=true
-  - SERVER=tomcat7 
-dist: precise
+  - SERVER=tomcat7
 
 before_install:
   # Gets scripts
