@@ -1,6 +1,6 @@
 # Serving Content with Spring MVC
 
-Return several types of content from a single controller and a single URL.
+Return several types of content from a single controller and a single URL inside a Spring MVC application.
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
