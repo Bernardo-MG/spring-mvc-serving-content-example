@@ -1,6 +1,6 @@
 # Serving Content with Spring MVC
 
-Example which uses a single controller and a single URL to return several types of content.
+Return several types of content from a single controller and a single URL.
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
