@@ -29,7 +29,7 @@ package com.bernardomg.example.spring.mvc.content.controller;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ExampleEntityViewConstants {
+public class ExampleEntityViewConstants {
 
     /**
      * Form bean parameter name.

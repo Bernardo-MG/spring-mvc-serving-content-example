@@ -71,7 +71,7 @@ public class ContentController {
      * @return the welcome view
      */
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
-    public final String showHtml(final ModelMap model) {
+    public String showHtml(final ModelMap model) {
         // Loads required data into the model
         loadViewModel(model);
 
@@ -86,7 +86,7 @@ public class ContentController {
      * @return the entities names as a string
      */
     @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
-    public final String showString(final ModelMap model) {
+    public String showString(final ModelMap model) {
         return getContentService().getStringContent();
     }
 
